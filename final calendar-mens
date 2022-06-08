@@ -1,0 +1,54 @@
+# impor semua metode dan kelas dari tkinter
+from ast import If
+from calendar import calendar
+from tkinter import *
+import tkinter.font
+from turtle import color
+# impor semua metode dan kelas dari tkcalendar
+from tkcalendar import *
+
+
+# Buat jendela GUI
+root = Tk()
+# Atur judul GUI
+root.title('Calender-Mens')
+# Atur konfigurasi jendela GUI
+root.geometry("600x400")
+
+thefont = tkinter.font.Font(size=10)
+
+# Buat dan atur label kalender untuk menampilkan tanggal yang dipilih
+cal = Calendar(root, selectmode="day", year=2022, month=6, day=9)
+cal = Calendar(disabledbackground="orange", bordercolor="white", 
+               headersbackground="orange", normalbackground="white", foreground='white', 
+               normalforeground='black', headersforeground='white')
+cal.config(background = "orange")
+cal.pack(pady=20, fill="both", expand=True)
+
+# Fungsi untuk menampilkan tanggal yang dipilih
+def grab_date():
+    my_label.config(text="Siklus Mens Pertama" + cal.get_date())
+
+# Buat tombol Mulai Mens untuk menampilkan tanggal yang dipilih
+my_button = Button(root, text="Mulai Mens", command=grab_date)
+my_button.pack(pady=20)
+
+# Buat Label untuk menunjukkan text
+my_label = Label(root, text="Masukkan tanggal menstruasi Anda")
+my_label.pack(pady=20)
+
+# Buat Frame untuk menulis catatan
+def catatan():
+    nwframe = LabelFrame(root, text="catatan", padx=10, pady=10)
+    nwframe.place(x=50 , y=50)
+    judul = Label(nwframe).grid(row = 0, column = 3)
+    e1 = Entry(nwframe)
+    e1["font"] = thefont
+    e1.grid(row=1,column=0)
+
+# Buat tombol Catatan
+my_button = Button(root, text="Catatan", command = catatan)
+my_button.pack(pady=20)
+
+# Start The GUI
+root.mainloop()
